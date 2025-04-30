@@ -58,14 +58,21 @@
 
         /* Header Styles */
         header {
-            background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 40;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Changed to fixed */
+    top: 0;
+    left: 0; /* Ensure it spans the full width */
+    width: 100%; /* Ensure it spans the full width */
+    z-index: 40;
+    transition: transform 0.3s ease-in-out; /* Added transition */
+}
+
+.header-hidden {
+    transform: translateY(-100%); /* Hide above the viewport */
+}
+
+/* The rest of your header styles remain the same */
 
         .dark header {
             background-color: #1f2937;
@@ -2236,6 +2243,25 @@
   // Update every second
   setInterval(updateDailyDealsCountdown, 1000);
   updateDailyDealsCountdown(); // Initial call
+
+        const header = document.querySelector("header");
+let prevScrollPos = window.scrollY;
+
+function handleScroll() {
+    const currentScrollPos = window.scrollY;
+    const scrollingDown = currentScrollPos > prevScrollPos;
+    const scrollThreshold = 10; // Adjust as needed
+
+    if (scrollingDown && currentScrollPos > scrollThreshold) {
+        header.classList.add("header-hidden");
+    } else {
+        header.classList.remove("header-hidden");
+    }
+
+    prevScrollPos = currentScrollPos;
+}
+
+window.addEventListener("scroll", handleScroll);
     </script>
 </body>
 </html>
