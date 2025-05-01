@@ -1471,6 +1471,126 @@
             <div class="swiper-pagination"></div>
         </div>
     </section>
+        <div style="background-color: #f9f4e9; padding: 10px 15px; font-family: sans-serif; font-size: 14px; color: #212121; border-radius: 5px; margin: 10px; display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; overflow: hidden;">
+  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+      <div style="display: flex; align-items: center; margin-bottom: 2px;">
+        <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 5px;"></i>
+        <span style="color: #4CAF50; font-weight: bold;">Free shipping</span>
+      </div>
+      <div style="font-size: 12px; color: #757575; margin-left: 21px;">Incredible</div>
+    </div>
+    <div style="width: 1px; height: 30px; background-color: #ddd;"></div>
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+      <div style="display: flex; align-items: center; margin-bottom: 2px;">
+        <i class="fas fa-box" style="color: #757575; margin-right: 5px;"></i>
+        <span style="font-weight: bold;">Free returns</span>
+      </div>
+      <div style="font-size: 12px; color: #757575; margin-left: 21px;">Up to 90 days*</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.querySelector('div[style*="background-color: #f9f4e9"]');
+  const content = [
+    {
+      leftIcon: "fa-check-circle",
+      leftColor: "#4CAF50",
+      leftTitle: "Free shipping",
+      leftSubtitle: "Incredible",
+      rightIcon: "fa-box",
+      rightColor: "#757575",
+      rightTitle: "Free returns",
+      rightSubtitle: "Up to 90 days*"
+    },
+    {
+      leftIcon: "fa-truck",
+      leftColor: "#007bff",
+      leftTitle: "Fast Delivery",
+      leftSubtitle: "Nationwide",
+      rightIcon: "fa-clock",
+      rightColor: "#ffc107",
+      rightTitle: "Order Tracking",
+      rightSubtitle: "Real-time updates"
+    },
+    {
+      leftIcon: "fa-shield-alt",
+      leftColor: "#9c27b0",
+      leftTitle: "Secure Payments",
+      leftSubtitle: "100% Protected",
+      rightIcon: "fa-headset",
+      rightColor: "#2196F3",
+      rightTitle: "24/7 Support",
+      rightSubtitle: "We're here to help"
+    },
+    {
+      leftIcon: "fa-tag",
+      leftColor: "#f44336",
+      leftTitle: "Daily Deals",
+      leftSubtitle: "Limited time offers",
+      rightIcon: "fa-gift",
+      rightColor: "#e91e63",
+      rightTitle: "Rewards Program",
+      rightSubtitle: "Earn points"
+    }
+  ];
+
+  let currentIndex = 0;
+  
+  function createBannerContent(item) {
+    return `
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <div style="display: flex; align-items: center; margin-bottom: 2px;">
+          <i class="fas ${item.leftIcon}" style="color: ${item.leftColor}; margin-right: 5px;"></i>
+          <span style="color: ${item.leftColor}; font-weight: bold;">${item.leftTitle}</span>
+        </div>
+        <div style="font-size: 12px; color: #757575; margin-left: 21px;">${item.leftSubtitle}</div>
+      </div>
+      <div style="width: 1px; height: 30px; background-color: #ddd;"></div>
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <div style="display: flex; align-items: center; margin-bottom: 2px;">
+          <i class="fas ${item.rightIcon}" style="color: ${item.rightColor}; margin-right: 5px;"></i>
+          <span style="font-weight: bold;">${item.rightTitle}</span>
+        </div>
+        <div style="font-size: 12px; color: #757575; margin-left: 21px;">${item.rightSubtitle}</div>
+      </div>
+    </div>
+    `;
+  }
+
+  function cycleContent() {
+    const nextIndex = (currentIndex + 1) % content.length;
+    const currentItem = content[currentIndex];
+    const nextItem = content[nextIndex];
+    
+    banner.innerHTML = `
+      <div style="position: absolute; top: 0; left: 0; width: 100%; padding: 10px 15px; transition: transform 0.5s ease-in-out;">
+        ${createBannerContent(currentItem)}
+      </div>
+      <div style="position: absolute; top: 100%; left: 0; width: 100%; padding: 10px 15px; transition: transform 0.5s ease-in-out;">
+        ${createBannerContent(nextItem)}
+      </div>
+    `;
+    
+    setTimeout(() => {
+      const slides = banner.querySelectorAll('div > div');
+      slides[0].style.transform = 'translateY(-100%)';
+      slides[1].style.transform = 'translateY(-100%)';
+    }, 10);
+    
+    setTimeout(() => {
+      banner.innerHTML = createBannerContent(nextItem);
+    }, 500);
+    
+    currentIndex = nextIndex;
+  }
+
+  setInterval(cycleContent, 3000);
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
         <!-- Flash Sale Banner -->
