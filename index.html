@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextPlug Kenya | Temu Style</title>
+    <title>Onel | Premium Phone Accessories</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
@@ -771,7 +771,7 @@
         }
 
         .grid-cols-4 {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
         }
 
         .grid-cols-5 {
@@ -790,13 +790,13 @@
 
         @media (min-width: 768px) {
             .md\:grid-cols-4 {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(5, 1fr);
             }
         }
 
         @media (min-width: 1024px) {
             .lg\:grid-cols-4 {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(5, 1fr);
             }
             .lg\:grid-cols-5 {
                 grid-template-columns: repeat(5, 1fr);
@@ -1470,15 +1470,36 @@
 .pb-4 {
     padding-bottom: 1rem;
 }
+.header-container {
+  position: relative;
+  width: 100%;
+  height: 80px; /* Keep the header height */
+  display: flex; /* Enable flexbox for alignment */
+  align-items: center; /* Vertically center the logo */
+}
+
+.header-container a {
+  display: block;
+  /* height: 100%; Remove this to control image height directly */
+}
+
+.header-container img {
+  /* position: absolute; Remove absolute positioning */
+  /* top: 50%; Remove top positioning */
+  left: 0; /* Keep it on the left */
+  height: 50px; /* Set the desired image height */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain;
+  /* transform: translateY(-50%); Remove vertical centering via transform */
+}
         /* Rest of your CSS styles... */
     </style>
 </head>
 <body>
+
     <header>
         <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-bolt"></i> NextPlug
-            </a>
+<a href="index.html"><img src="onel.png" alt="onel Logo"></a>
             <div class="header-right">
                 <button id="theme-toggle" class="theme-toggle">
                     <i class="fas fa-moon"></i>
@@ -1673,7 +1694,7 @@
     <div style="background-color: #008000; color: white; padding: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <div>
             <i class="fas fa-shield-alt" style="margin-right: 5px;"></i>
-            <span style="font-weight: bold;">Why choose Next Plug</span>
+            <span style="font-weight: bold;">Why choose Onel</span>
         </div>
         <div>
             <span>Safe payments <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></span>
@@ -2227,6 +2248,33 @@
                         </div>
                     </div>
                 </div>
+ <!-- New Arrival 2 -->
+ <div class="product-card">
+    <div class="product-image-container">
+        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=892&q=80"
+            alt="Gaming Headset" class="product-image">
+        <span class="discount-badge">NEW</span>
+    </div>
+    <div class="product-info">
+        <h3 class="product-title">RGB Gaming Headset</h3>
+        <div class="ratings">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <i class="far fa-star"></i>
+            <span class="sold-count">(28)</span>
+        </div>
+        <div class="product-footer">
+            <div>
+                <span class="product-price">KSh 4,999</span>
+            </div>
+            <button class="cart-button">
+                <i class="fas fa-cart-plus"></i>
+            </button>
+        </div>
+    </div>
+</div>
 
                 <!-- New Arrival 4 -->
                 <div class="product-card">
@@ -2538,7 +2586,7 @@
         <div class="container px-4">
             <div class="footer-grid">
                 <div>
-                    <h3 class="footer-title">NextPlug Kenya</h3>
+                    <h3 class="footer-title">Onel</h3>
                     <p class="footer-text">Your ultimate destination for quality electronics and accessories in Kenya.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -2568,7 +2616,7 @@
 
             </div>
             <div class="copyright">
-                <p>© 2025 NextPlug Kenya. All rights reserved.</p>
+                <p>© 2025 Onel. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2679,7 +2727,55 @@ function handleScroll() {
 
 window.addEventListener("scroll", handleScroll);
     </script>
-                <script>
+    <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const scroller = document.querySelector('.lightning-deals .overflow-x-auto');
+    const products = scroller.querySelectorAll('.flex-shrink-0');
+    let currentIndex = 0;
+    let scrollInterval;
+    const scrollDelay = 3000;
+
+    function startAutoScroll() {
+      scrollInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % products.length;
+        const product = products[currentIndex];
+        if (product) {
+          scroller.scrollTo({
+            left: product.offsetLeft - scroller.offsetLeft,
+            behavior: 'smooth'
+          });
+        }
+
+        if (currentIndex === products.length - 1) {
+          setTimeout(() => {
+            scroller.scrollTo({
+              left: 0,
+              behavior: 'auto'
+            });
+            currentIndex = 0;
+          }, 1000);
+        }
+      }, scrollDelay);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(scrollInterval);
+    }
+
+    startAutoScroll();
+
+    // Optional: Pause on hover
+    scroller.addEventListener('mouseenter', stopAutoScroll);
+    scroller.addEventListener('mouseleave', startAutoScroll);
+
+    // Optional: Pause on touch for mobile
+    scroller.addEventListener('touchstart', stopAutoScroll);
+    scroller.addEventListener('touchend', () => {
+      setTimeout(startAutoScroll, 3000);
+    });
+  });
+</script>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const scroller = document.querySelector('.flex.overflow-x-auto');
     const items = document.querySelectorAll('.flex-shrink-0');
@@ -2722,6 +2818,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-                </script>
+</script>
+
 </body>
 </html>
