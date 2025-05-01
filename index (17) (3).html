@@ -1,0 +1,2696 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextPlug Kenya | Temu Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+            /* Base Styles */
+        :root {
+            --bg-light: #f9fafb;
+            --text-light: #1f2937;
+            --bg-dark: #111827;
+            --text-dark: #f3f4f6;
+            --primary: #ff6f00;
+            --primary-dark: #e65100;
+            --secondary: #ff9e40;
+            --gray: #6c757d;
+            --light-gray: #f8f9fa;
+            --off-white: #f5f5f5;
+            --border-light: #e5e7eb;
+            --border-dark: #374151;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+        }
+        
+        body {
+    
+            background-color: #f9fafb;
+            color: #1f2937;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        body.dark {
+            background-color: #111827;
+            color: #f3f4f6;
+        }
+
+        /* Container Styles */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        header {
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Changed to fixed */
+    top: 0;
+    left: 0; /* Ensure it spans the full width */
+    width: 100%; /* Ensure it spans the full width */
+    z-index: 40;
+    transition: transform 0.3s ease-in-out; /* Added transition */
+}
+
+.header-hidden {
+    transform: translateY(-100%); /* Hide above the viewport */
+}
+.hero-swiper {
+    margin-top: 30px; /* Adjust this value to match your header's height */
+    width: 100%;
+    height: 300px;
+}
+
+@media (min-width: 768px) {
+    .hero-swiper {
+        height: 400px;
+        margin-top: 30px; /* Adjust this value to match your header's height */
+    }
+}
+/* The rest of your header styles remain the same */
+
+        .dark header {
+            background-color: #1f2937;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            padding: 0 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #ff6f00;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            padding: 0.5rem;
+            border-radius: 50%;
+            outline: none;
+            color: #ff6f00;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile Menu Styles */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .bar {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #ff6f00;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 60px);
+            background-color: white;
+            z-index: 30;
+            padding: 1rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu a {
+            padding: 0.75rem 1rem;
+            color: #1f2937;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f3f4f6;
+        }
+
+        .dark .mobile-menu {
+            background-color: #1f2937;
+        }
+
+        .dark .mobile-menu a {
+            color: #f3f4f6;
+        }
+
+        .dark .mobile-menu a:hover {
+            background-color: #374151;
+        }
+
+        /* Main Content Styles */
+        main {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Shipping Banner */
+        .shipping-banner {
+            background-color: #f8f9fa;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+
+        .dark .shipping-banner {
+            background-color: #374151;
+            color: #d1d5db;
+        }
+
+        /* Hero Slider */
+        .hero-swiper {
+            width: 100%;
+            height: 100px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-swiper {
+                height: 150px;
+            }
+        }
+
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .hero-text {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtext {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            max-width: 600px;
+        }
+
+        .hero-button {
+            background-color: #ff6f00;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .hero-button:hover {
+            background-color: #e65100;
+        }
+
+        /* Flash Sale Banner */
+        .flash-sale-banner {
+            background: linear-gradient(to right, #ff6f00, #ff9e40);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+        }
+
+        .flash-sale-title {
+            font-weight: bold;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .flash-sale-subtext {
+            font-size: 0.875rem;
+        }
+
+        .countdown-timer {
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15rem;
+            padding: 0 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+                /* Dark mode text colors */
+        .dark .product-title,
+        .dark .category-title,
+        .dark .section-title,
+        .dark .help-title {
+            color: var(--text-dark);
+        }
+
+        .dark .shipping-text,
+        .dark .original-price,
+        .dark .sold-count,
+        .dark .help-text {
+            color: #d1d5db;
+        }
+
+        /* Dark mode backgrounds */
+        .dark .product-card,
+        .dark .category-card,
+        .dark .help-banner {
+            background-color: #1f2937;
+            border-color: var(--border-dark);
+        }
+
+        .dark .bg-off-white {
+            background-color: #374151;
+        }
+
+        .dark .bg-white {
+            background-color: #1f2937;
+        }
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            background-color: #ff6f00;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 9999px;
+            height: 1.25rem;
+            width: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle {
+            padding: 0.5rem;
+            border-radius: 9999px;
+            outline: none;
+            color: #ff6f00;
+        }
+
+        .theme-toggle:hover {
+            background-color: #f3f4f6;
+        }
+
+        .dark .theme-toggle:hover {
+            background-color: #374151;
+        }
+
+
+        /* Shipping Banner */
+        .shipping-banner {
+            background-color: #f8f9fa;
+            padding: 0.5rem 0;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .dark .shipping-banner {
+            background-color: #374151;
+        }
+
+        .shipping-text {
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+
+        .dark .shipping-text {
+            color: #d1d5db;
+        }
+
+        /* Hero Slider */
+        .hero-swiper {
+            width: 100%;
+            height: 150px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-swiper {
+                height: 150px;;
+            }
+        }
+
+        .swiper-slide {
+            text-align: center;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 1rem;
+        }
+
+        .hero-text {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtext {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero-text {
+                font-size: 1.5rem;
+            }
+            .hero-subtext {
+                font-size: 0.9rem;
+            }
+        }
+
+        .hero-button {
+            background-color: #ff6f00;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+        }
+
+        .hero-button:hover {
+            background-color: #b45309;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #ff6f00 !important;
+        }
+
+        /* Flash Sale Banner */
+        .flash-sale-banner {
+            background: linear-gradient(to right, #ff6f00, #ff9e40);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .flash-sale-title {
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+
+        .flash-sale-subtitle {
+            font-size: 0.875rem;
+        }
+
+        .countdown-timer {
+            font-family: monospace;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .product-card {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+
+        .product-image-container {
+            position: relative;
+        }
+
+                .product-image {
+            width: 100%;
+            height: 12rem;
+            object-fit: cover;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .product-info {
+            padding: 12px;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            min-height: 2.5rem;
+        }
+
+        .dark .product-title {
+            color: #e5e7eb;
+        }
+
+        .product-price {
+            color: #ff6f00;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .dark .product-price {
+            color: #f97316;
+        }
+
+        .original-price {
+            color: #9ca3af;
+            font-size: 14px;
+            text-decoration: line-through;
+            margin-left: 6px;
+        }
+
+        .dark .original-price {
+            color: #9ca3af;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ef4444;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .ratings {
+            display: flex;
+            align-items: center;
+            color: #f59e0b;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .sold-count {
+            color: #6b7280;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .dark .sold-count {
+            color: #9ca3af;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .cart-button:hover {
+            background-color: #b45309;
+        }
+
+        .local-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #10b981;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 20px;
+        }
+
+        /* Category Cards */
+        .category-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .dark .category-card {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+
+        .category-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .category-image-container {
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dark .category-image-container {
+            background-color: #4b5563;
+        }
+
+        .category-image {
+            height: 5rem;
+            object-fit: contain;
+        }
+
+        .category-title {
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .dark .category-title {
+            color: #e5e7eb;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .view-all {
+            color: #ff6f00;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .view-all i {
+            margin-left: 4px;
+        }
+
+        /* Grid Layouts */
+        .grid-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .grid-cols-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .grid-cols-6 {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        @media (min-width: 640px) {
+            .sm\:grid-cols-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .md\:grid-cols-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .lg\:grid-cols-5 {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            .lg\:grid-cols-6 {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        /* Background Sections */
+        .bg-off-white {
+            background-color: #f5f5f5;
+        }
+
+        .dark .bg-off-white {
+            background-color: #374151;
+        }
+
+        .bg-orange {
+            background-color: #ff6f00;
+        }
+
+        .bg-gray-100 {
+            background-color: #f3f4f6;
+        }
+
+        .dark .bg-gray-100 {
+            background-color: #374151;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+
+        /* Spacing Utilities */
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .py-6 {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .py-8 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.25rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .mt-6 {
+            margin-top: 1.5rem;
+        }
+
+        .mr-1 {
+            margin-right: 0.25rem;
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem;
+        }
+
+        .ml-1 {
+            margin-left: 0.25rem;
+        }
+
+        .ml-2 {
+            margin-left: 0.5rem;
+        }
+
+        .ml-6 {
+            margin-left: 1.5rem;
+        }
+
+        /* Flex Utilities */
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        /* Text Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        /* Small Banner */
+        .small-banner {
+            background-color: #ff6f00;
+            color: white;
+            text-align: center;
+        }
+
+        .small-banner-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .small-banner-button {
+            background-color: white;
+            color: #ff6f00;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+        }
+
+        .small-banner-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Help Banner */
+        .help-banner {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark .help-banner {
+            background-color: #1f2937;
+        }
+
+        .help-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .dark .help-title {
+            color: white;
+        }
+
+        .help-text {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .dark .help-text {
+            color: #d1d5db;
+        }
+
+        .help-button {
+            background-color: #ff6f00;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+        }
+
+        .help-button:hover {
+            background-color: #b45309;
+        }
+
+        @media (min-width: 768px) {
+            .help-banner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .help-content {
+                margin-bottom: 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #9ca3af;
+            font-size: 1.125rem;
+            transition: color 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: white;
+        }
+
+        .newsletter-input {
+            background-color: #374151;
+            color: #d1d5db;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            width: 100%;
+            outline: none;
+        }
+
+        .newsletter-input:focus {
+            box-shadow: 0 0 0 2px #ff9e40;
+        }
+
+        .newsletter-button {
+            background-color: #ff6f00;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            margin-top: 0.5rem;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .newsletter-button:hover {
+            background-color: #b45309;
+        }
+    /* Membership Banner - Matching Flash Sale Style */
+    .membership-banner {
+        background: linear-gradient(to right, #ff6f00, #ff9e40);
+        color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 1.5rem auto;
+        max-width: 1280px;
+        text-align: center;
+    }
+
+    .membership-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .membership-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .membership-text {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .membership-button {
+        background-color: white;
+        color: #ff6f00;
+        font-weight: bold;
+        padding: 0.5rem 1.5rem;
+        border-radius: 2rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+    }
+
+    .membership-button:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: translateY(-2px);
+    }
+
+    @media (min-width: 768px) {
+        .membership-content {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+        }
+        .membership-button {
+            margin-top: 0;
+        }
+    }
+        .copyright {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+  /* Flash Sale Container - Adapts to Theme */
+  section.flash-sale {
+    background-color: #f8f9fa; /* Light mode background */
+    transition: background-color 0.3s ease;
+    padding: 1.5rem 0;
+  }
+  
+  .dark section.flash-sale {
+    background-color: #1f2937; /* Dark mode background */
+  }
+
+  /* Flash Sale Banner - Stays orange in both modes */
+  .flash-sale-banner {
+    background: linear-gradient(to right, #ff6f00, #ff9e40);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Countdown Timer - Visible in both themes */
+  .countdown-timer {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  /* Text Styles */
+  .flash-sale-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .flash-sale-subtext {
+    font-size: 0.875rem;
+  }
+    /* ======================= */
+  /* Membership Section */
+  /* ======================= */
+  /* Light Mode Background */
+  section.bg-temu-orange:has(.membership-banner) {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Dark Mode Background */
+  .dark section.bg-temu-orange:has(.membership-banner) {
+    background-color: #1f2937;
+  }
+
+  /* Membership Banner */
+  .membership-banner {
+    background: linear-gradient(to right, #ff6f00, #ff9e40);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ======================= */
+  /* Shared Styles */
+  /* ======================= */
+  .flash-sale-banner,
+  .membership-banner {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Container spacing */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+    /* Daily Deals Section */
+  .daily-deals-section {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dark .daily-deals-section {
+    background-color: #1f2937;
+  }
+
+  .daily-deals-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+  }
+
+  .dark .section-title {
+    color: #f3f4f6;
+  }
+
+  .countdown-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .countdown-label {
+    font-size: 0.875rem;
+    color: #ff6f00;
+    margin-right: 0.5rem;
+  }
+
+  .countdown-timer {
+    background-color: #ff6f00;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+  }
+  /* Lightning Deals Styles */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.w-40 {
+    width: 10rem; /* 160px */
+}
+
+.mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.relative {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.pb-4 {
+    padding-bottom: 1rem;
+}
+/* Lightning Deals Styles */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
+
+.w-40 {
+    width: 10rem; /* 160px */
+}
+
+.mx-2 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.relative {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.pb-4 {
+    padding-bottom: 1rem;
+}
+        /* Rest of your CSS styles... */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt"></i> NextPlug
+            </a>
+            <div class="header-right">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <a href="#"><i class="fas fa-home mr-2"></i> Home</a>
+            <a href="#"><i class="fas fa-store mr-2"></i> Shop</a>
+            <a href="#"><i class="fas fa-tag mr-2"></i> Deals</a>
+            <a href="#"><i class="fas fa-fire mr-2"></i> Flash Sale</a>
+            <a href="#"><i class="fas fa-box-open mr-2"></i> New Arrivals</a>
+            <a href="#"><i class="fas fa-th-large mr-2"></i> Categories</a>
+            <a href="#"><i class="fas fa-info-circle mr-2"></i> About</a>
+            <a href="#"><i class="fas fa-phone mr-2"></i> Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="shipping-banner">
+            <div class="container">
+                <p><i class="fas fa-truck mr-1"></i> Free shipping on orders over KSh 1000</p>
+            </div>
+        </section>
+
+        <!-- Hero Slider -->
+        <section class="hero">
+            <div class="swiper heroSwiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tech Sale">
+                        <div class="slide-content">
+                            <h2 class="hero-text">Tech Mega Sale</h2>
+                            <p class="hero-subtext">Up to 50% off on all gadgets</p>
+                            <button class="hero-button">Shop Now</button>
+                        </div>
+                    </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Mobile Accessories">
+                    <div class="slide-content">
+                        <h2 class="hero-text">Mobile Accessories</h2>
+                        <p class="hero-subtext">Best prices in Kenya</p>
+                        <button class="hero-button">
+                            Explore
+                        </button>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="New Arrivals">
+                    <div class="slide-content">
+                        <h2 class="hero-text">New Arrivals</h2>
+                        <p class="hero-subtext">Fresh from the factory</p>
+                        <button class="hero-button">
+                            Discover
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+
+        <!-- Flash Sale Banner -->
+        <section class="flash-sale">
+                    <div style="background-color: #f9f4e9; padding: 10px 15px; font-family: sans-serif; font-size: 14px; color: #212121; border-radius: 5px; margin: 10px; display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; overflow: hidden;">
+  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+      <div style="display: flex; align-items: center; margin-bottom: 2px;">
+        <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 5px;"></i>
+        <span style="color: #4CAF50; font-weight: bold;">Free shipping</span>
+      </div>
+      <div style="font-size: 12px; color: #757575; margin-left: 21px;">Incredible</div>
+    </div>
+    <div style="width: 1px; height: 30px; background-color: #ddd;"></div>
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+      <div style="display: flex; align-items: center; margin-bottom: 2px;">
+        <i class="fas fa-box" style="color: #757575; margin-right: 5px;"></i>
+        <span style="font-weight: bold;">Free returns</span>
+      </div>
+      <div style="font-size: 12px; color: #757575; margin-left: 21px;">Up to 90 days*</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.querySelector('div[style*="background-color: #f9f4e9"]');
+  const content = [
+    {
+      leftIcon: "fa-check-circle",
+      leftColor: "#4CAF50",
+      leftTitle: "Free shipping",
+      leftSubtitle: "Incredible",
+      rightIcon: "fa-box",
+      rightColor: "#757575",
+      rightTitle: "Free returns",
+      rightSubtitle: "Up to 90 days*"
+    },
+    {
+      leftIcon: "fa-truck",
+      leftColor: "#007bff",
+      leftTitle: "Fast Delivery",
+      leftSubtitle: "Nationwide",
+      rightIcon: "fa-clock",
+      rightColor: "#ffc107",
+      rightTitle: "Order Tracking",
+      rightSubtitle: "Real-time updates"
+    },
+    {
+      leftIcon: "fa-shield-alt",
+      leftColor: "#9c27b0",
+      leftTitle: "Secure Payments",
+      leftSubtitle: "100% Protected",
+      rightIcon: "fa-headset",
+      rightColor: "#2196F3",
+      rightTitle: "24/7 Support",
+      rightSubtitle: "We're here to help"
+    },
+    {
+      leftIcon: "fa-tag",
+      leftColor: "#f44336",
+      leftTitle: "Daily Deals",
+      leftSubtitle: "Limited time offers",
+      rightIcon: "fa-gift",
+      rightColor: "#e91e63",
+      rightTitle: "Rewards Program",
+      rightSubtitle: "Earn points"
+    }
+  ];
+
+  let currentIndex = 0;
+  
+  function createBannerContent(item) {
+    return `
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <div style="display: flex; align-items: center; margin-bottom: 2px;">
+          <i class="fas ${item.leftIcon}" style="color: ${item.leftColor}; margin-right: 5px;"></i>
+          <span style="color: ${item.leftColor}; font-weight: bold;">${item.leftTitle}</span>
+        </div>
+        <div style="font-size: 12px; color: #757575; margin-left: 21px;">${item.leftSubtitle}</div>
+      </div>
+      <div style="width: 1px; height: 30px; background-color: #ddd;"></div>
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <div style="display: flex; align-items: center; margin-bottom: 2px;">
+          <i class="fas ${item.rightIcon}" style="color: ${item.rightColor}; margin-right: 5px;"></i>
+          <span style="font-weight: bold;">${item.rightTitle}</span>
+        </div>
+        <div style="font-size: 12px; color: #757575; margin-left: 21px;">${item.rightSubtitle}</div>
+      </div>
+    </div>
+    `;
+  }
+
+  function cycleContent() {
+    const nextIndex = (currentIndex + 1) % content.length;
+    const currentItem = content[currentIndex];
+    const nextItem = content[nextIndex];
+    
+    banner.innerHTML = `
+      <div style="position: absolute; top: 0; left: 0; width: 100%; padding: 10px 15px; transition: transform 0.5s ease-in-out;">
+        ${createBannerContent(currentItem)}
+      </div>
+      <div style="position: absolute; top: 100%; left: 0; width: 100%; padding: 10px 15px; transition: transform 0.5s ease-in-out;">
+        ${createBannerContent(nextItem)}
+      </div>
+    `;
+    
+    setTimeout(() => {
+      const slides = banner.querySelectorAll('div > div');
+      slides[0].style.transform = 'translateY(-100%)';
+      slides[1].style.transform = 'translateY(-100%)';
+    }, 10);
+    
+    setTimeout(() => {
+      banner.innerHTML = createBannerContent(nextItem);
+    }, 500);
+    
+    currentIndex = nextIndex;
+  }
+
+  setInterval(cycleContent, 3000);
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div style="/* Styles for the parent container */ padding: 10px;">
+    <div style="background-color: #008000; color: white; padding: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div>
+            <i class="fas fa-shield-alt" style="margin-right: 5px;"></i>
+            <span style="font-weight: bold;">Why choose Next Plug</span>
+        </div>
+        <div>
+            <span>Safe payments <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></span>
+        </div>
+    </div>
+</div>
+            <div class="container">
+                <div class="flash-sale-banner">
+                    <div>
+                        <h3 class="flash-sale-title"><i class="fas fa-bolt"></i> FLASH SALE</h3>
+                        <p class="flash-sale-subtext">Limited time offers - prices as marked</p>
+                    </div>
+                    <div class="countdown-timer">
+                        <span id="hours">12</span>:<span id="minutes">34</span>:<span id="seconds">56</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- Lightning Deals Section -->
+<section class="py-6 bg-white dark:bg-gray-800">
+    <div class="container px-4">
+        <div class="section-header">
+            <h2 class="section-title">Lightning Deals</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+        </div>
+
+        <div class="relative">
+            <div class="flex overflow-x-auto pb-4 hide-scrollbar" style="scroll-snap-type: x mandatory;">
+                <!-- Lightning Deal 1 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="USB-C Cable" class="product-image">
+                            <span class="discount-badge">-60%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">3-in-1 Charging Cable</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 399</span>
+                                    <span class="original-price">KSh 999</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 2 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Wireless Earbuds" class="product-image">
+                            <span class="discount-badge">-45%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Wireless Earbuds</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 2,499</span>
+                                    <span class="original-price">KSh 4,499</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 3 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Power Bank" class="product-image">
+                            <span class="discount-badge">-55%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Power Bank</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 2,699</span>
+                                    <span class="original-price">KSh 5,999</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 4 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Smart Watch" class="product-image">
+                            <span class="discount-badge">-45%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Smart Watch</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 3,849</span>
+                                    <span class="original-price">KSh 6,999</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 5 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Bluetooth Speaker" class="product-image">
+                            <span class="discount-badge">-40%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bluetooth Speaker</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 1,739</span>
+                                    <span class="original-price">KSh 2,899</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 6 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=672&q=80"
+                                alt="Phone" class="product-image">
+                            <span class="discount-badge">-35%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Smartphone</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 15,999</span>
+                                    <span class="original-price">KSh 24,999</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 7 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1547721064-da6cfb341d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Phone Case" class="product-image">
+                            <span class="discount-badge">-50%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Phone Case</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 499</span>
+                                    <span class="original-price">KSh 999</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 8 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                                alt="Accessories" class="product-image">
+                            <span class="discount-badge">-30%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Accessories Kit</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 1,299</span>
+                                    <span class="original-price">KSh 1,899</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 9 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                alt="Wireless Charger" class="product-image">
+                            <span class="discount-badge">-25%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Wireless Charger</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 2,499</span>
+                                    <span class="original-price">KSh 3,299</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightning Deal 10 -->
+                <div class="flex-shrink-0 w-40 mx-2" style="scroll-snap-align: start;">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=892&q=80"
+                                alt="Gaming Headset" class="product-image">
+                            <span class="discount-badge">-40%</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Gaming Headset</h3>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">KSh 4,999</span>
+                                    <span class="original-price">KSh 8,299</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Flash Sale Products -->
+    <section class="py-6 bg-white dark:bg-gray-800">
+        <div class="container px-4">
+            <div class="grid-container grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Flash Sale Product 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="USB-C Cable" class="product-image">
+                        <span class="discount-badge">-60%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">3-in-1 Charging Cable</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="sold-count">(210)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 399</span>
+                                <span class="original-price">KSh 999</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flash Sale Product 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="Wireless Earbuds" class="product-image">
+                        <span class="discount-badge">-45%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pro Wireless Earbuds (Bluetooth 5.3)</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="sold-count">(1.2k)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 2,499</span>
+                                <span class="original-price">KSh 4,499</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flash Sale Product 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="Power Bank" class="product-image">
+                        <span class="discount-badge">-55%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">20,000mAh Power Bank</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="sold-count">(312)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 2,699</span>
+                                <span class="original-price">KSh 5,999</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flash Sale Product 4 -->
+<!-- Flash Sale Product 4 -->
+<div class="product-card">
+    <div class="product-image-container">
+        <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            alt="Smart Watch" class="product-image">
+        <span class="discount-badge">-45%</span>
+    </div>
+    <div class="product-info">
+        <h3 class="product-title">Smart Watch Pro</h3>
+        <div class="ratings">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span class="sold-count">(45)</span>
+        </div>
+        <div class="product-footer">
+            <div>
+                <span class="product-price">KSh 3,849</span>
+                <span class="original-price">KSh 6,999</span>
+            </div>
+            <button class="cart-button">
+                <i class="fas fa-cart-plus"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Flash Sale Product 5 -->
+<div class="product-card">
+    <div class="product-image-container">
+        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+            alt="Bluetooth Speaker" class="product-image">
+        <span class="discount-badge">-40%</span>
+    </div>
+    <div class="product-info">
+        <h3 class="product-title">Portable Bluetooth Speaker</h3>
+        <div class="ratings">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <span class="sold-count">(167)</span>
+        </div>
+        <div class="product-footer">
+            <div>
+                <span class="product-price">KSh 1,739</span>
+                <span class="original-price">KSh 2,899</span>
+            </div>
+            <button class="cart-button">
+                <i class="fas fa-cart-plus"></i>
+            </button>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <!-- Shop by Category -->
+    <section class="py-6 bg-off-white dark:bg-gray-700">
+        <div class="container px-4">
+            <div class="section-header">
+                <h2 class="section-title">Shop by Category</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <div class="grid-container grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Category 1 -->
+                <a href="#" class="category-card">
+                    <div class="p-4">
+                        <div class="category-image-container">
+                            <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=672&q=80" 
+                                 alt="Phones" class="category-image">
+                        </div>
+                        <h3 class="category-title">Phones</h3>
+                    </div>
+                </a>
+
+                <!-- Category 2 -->
+                <a href="#" class="category-card">
+                    <div class="p-4">
+                        <div class="category-image-container">
+                            <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Power Banks" class="category-image">
+                        </div>
+                        <h3 class="category-title">Power Banks</h3>
+                    </div>
+                </a>
+
+                <!-- Category 3 -->
+                <a href="#" class="category-card">
+                    <div class="p-4">
+                        <div class="category-image-container">
+                            <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Smart Watches" class="category-image">
+                        </div>
+                        <h3 class="category-title">Smart Watches</h3>
+                    </div>
+                </a>
+
+                <!-- Category 4 -->
+                <a href="#" class="category-card">
+                    <div class="p-4">
+                        <div class="category-image-container">
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Earbuds" class="category-image">
+                        </div>
+                        <h3 class="category-title">Earbuds</h3>
+                    </div>
+                </a>
+
+                <!-- Category 5 -->
+                <a href="#" class="category-card">
+                    <div class="p-4">
+                        <div class="category-image-container">
+                            <img src="https://images.unsplash.com/photo-1547721064-da6cfb341d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Phone Cases" class="category-image">
+                        </div>
+                        <h3 class="category-title">Phone Cases</h3>
+                    </div>
+                </a>
+
+                <!-- Category 6 -->
+                <a href="#" class="category-card">
+                    <div class="p-4">
+                        <div class="category-image-container">
+                            <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                                 alt="Accessories" class="category-image">
+                        </div>
+                        <h3 class="category-title">Accessories</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="py-6 bg-white dark:bg-gray-800">
+        <div class="container px-4">
+            <div class="section-header">
+                <h2 class="section-title">New Arrivals</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <div class="grid-container grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- New Arrival 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                            alt="Wireless Charger" class="product-image">
+                        <span class="discount-badge">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">15W Fast Wireless Charger</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="sold-count">(42)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 2,499</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Arrival 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=892&q=80"
+                            alt="Gaming Headset" class="product-image">
+                        <span class="discount-badge">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">RGB Gaming Headset</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span class="sold-count">(28)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 4,999</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Arrival 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=892&q=80"
+                            alt="Smart Band" class="product-image">
+                        <span class="discount-badge">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Fitness Smart Band</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="sold-count">(35)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 2,299</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Arrival 4 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1600267165477-6d4cc741b379?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                            alt="Car Mount" class="product-image">
+                        <span class="discount-badge">NEW</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Magnetic Car Phone Mount</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="sold-count">(51)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 1,599</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Small Banner -->
+
+<!-- Membership Section HTML -->
+<section class="py-6 bg-temu-orange text-white">
+  <div class="container mx-auto px-4">
+    <div class="membership-banner">
+                <h2 class="membership-title">
+                    <i class="fas fa-crown"></i>Join Our Membership</h2>
+      <p class="mb-4">Get exclusive deals and 10% off your first order</p>
+                 <button class="membership-button">
+                Sign Up Now
+            </button>
+    </div>
+  </div>
+</section>
+    <!-- Recommended Products -->
+    <section class="py-6 bg-off-white dark:bg-gray-700">
+        <div class="container px-4">
+            <div class="section-header">
+                <h2 class="section-title">Recommended For You</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+            </div>
+
+            <div class="grid-container grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Recommended Product 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="Fast Charger" class="product-image">
+                        <span class="discount-badge">BESTSELLER</span>
+                        <span class="local-badge">Local</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">20W Fast Charger</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="sold-count">(124)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 1,299</span>
+                                <span class="original-price">KSh 1,599</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Product 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="Wireless Earbuds" class="product-image">
+                        <span class="discount-badge">-15%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Earbuds Pro</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="sold-count">(89)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 3,499</span>
+                                <span class="original-price">KSh 3,999</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Product 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1026&q=80"
+                            alt="Laptop Stand" class="product-image">
+                        <span class="discount-badge">-30%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adjustable Laptop Stand</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="sold-count">(78)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 1,799</span>
+                                <span class="original-price">KSh 2,599</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommended Product 4 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
+                            alt="External SSD" class="product-image">
+                        <span class="discount-badge">FLASH SALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">1TB External SSD</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="sold-count">(156)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 8,999</span>
+                                <span class="original-price">KSh 12,999</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Deals -->
+    <section class="py-6 bg-white dark:bg-gray-800">
+  <div class="daily-deals-container">
+    <div class="section-header">
+      <h2 class="section-title">Daily Deals</h2>
+      <div class="countdown-container">
+        <span class="countdown-label">Ends in:</span>
+        <span class="countdown-timer" id="daily-deals-timer">12:34:56</span>
+      </div>
+    </div>
+
+            <div class="grid-container grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Deal 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1026&q=80"
+                            alt="Laptop Stand" class="product-image">
+                        <span class="discount-badge">-30%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adjustable Laptop Stand</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="sold-count">(78)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 1,799</span>
+                                <span class="original-price">KSh 2,599</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deal 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                            alt="Wireless Keyboard" class="product-image">
+                        <span class="discount-badge">-25%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Keyboard & Mouse</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="sold-count">(112)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 2,499</span>
+                                <span class="original-price">KSh 3,299</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deal 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                            alt="Ring Light" class="product-image">
+                        <span class="discount-badge">-40%</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">10" Ring Light with Stand</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="sold-count">(203)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 3,299</span>
+                                <span class="original-price">KSh 5,499</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deal 4 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
+                            alt="External SSD" class="product-image">
+                        <span class="discount-badge">FLASH SALE</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">1TB External SSD</h3>
+                        <div class="ratings">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="sold-count">(156)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div>
+                                <span class="product-price">KSh 8,999</span>
+                                <span class="original-price">KSh 12,999</span>
+                            </div>
+                            <button class="cart-button">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Small Banner 2 -->
+    <section class="py-6 bg-gray-100 dark:bg-gray-700">
+        <div class="container px-4">
+            <div class="help-banner">
+                <div class="help-content">
+                    <h3 class="help-title">Need Help With Your Order?</h3>
+                    <p class="help-text">Our customer service team is available 24/7</p>
+                </div>
+                <button class="help-button">
+                    Contact Support
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container px-4">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">NextPlug Kenya</h3>
+                    <p class="footer-text">Your ultimate destination for quality electronics and accessories in Kenya.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Phones</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Smartwatches</a></li>
+                        <li><a href="#">Audio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="copyright">
+                <p>© 2025 NextPlug Kenya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Enhanced Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = themeToggle.querySelector('.fa-moon');
+        const html = document.documentElement;
+
+        function setTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                moonIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                moonIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = !html.classList.contains('dark');
+            setTheme(isDark);
+        });
+
+        // Initialize theme
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        setTheme(savedTheme === 'dark');
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Initialize Swiper
+        const swiper = new Swiper('.heroSwiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const hours = 23 - now.getHours();
+            const minutes = 59 - now.getMinutes();
+            const seconds = 59 - now.getSeconds();
+
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+          // Daily Deals Countdown Timer
+  function updateDailyDealsCountdown() {
+    const now = new Date();
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 0);
+    
+    const diff = endOfDay - now;
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    document.getElementById('daily-deals-timer').textContent = 
+      `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+
+  // Update every second
+  setInterval(updateDailyDealsCountdown, 1000);
+  updateDailyDealsCountdown(); // Initial call
+
+        const header = document.querySelector("header");
+let prevScrollPos = window.scrollY;
+
+function handleScroll() {
+    const currentScrollPos = window.scrollY;
+    const scrollingDown = currentScrollPos > prevScrollPos;
+    const scrollThreshold = 10; // Adjust as needed
+
+    if (scrollingDown && currentScrollPos > scrollThreshold) {
+        header.classList.add("header-hidden");
+    } else {
+        header.classList.remove("header-hidden");
+    }
+
+    prevScrollPos = currentScrollPos;
+}
+
+window.addEventListener("scroll", handleScroll);
+    </script>
+</body>
+</html>
