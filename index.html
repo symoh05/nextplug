@@ -2679,5 +2679,49 @@ function handleScroll() {
 
 window.addEventListener("scroll", handleScroll);
     </script>
+                <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const scroller = document.querySelector('.flex.overflow-x-auto');
+    const items = document.querySelectorAll('.flex-shrink-0');
+    const scrollDelay = 3000; // Scroll every 3 seconds
+    let currentIndex = 0;
+    let scrollInterval;
+
+    function startAutoScroll() {
+        scrollInterval = setInterval(() => {
+            currentIndex++;
+            if (currentIndex >= items.length) {
+                currentIndex = 0; // Restart the scroll from the beginning
+            }
+            const nextItem = items[currentIndex];
+            scroller.scrollTo({
+                left: nextItem.offsetLeft,
+                behavior: 'smooth'
+            });
+        }, scrollDelay);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(scrollInterval);
+    }
+
+    // Start auto-scroll
+    startAutoScroll();
+
+    // Pause auto-scroll on mouse hover
+    scroller.addEventListener('mouseenter', stopAutoScroll);
+    scroller.addEventListener('mouseleave', startAutoScroll);
+
+    // Pause on scroll or touch events, resume after 3 seconds
+    ['touchstart', 'mousedown', 'scroll'].forEach(evt => {
+        scroller.addEventListener(evt, () => {
+            stopAutoScroll();
+            clearTimeout(scroller._resumeTimer);
+            scroller._resumeTimer = setTimeout(startAutoScroll, 2000);
+        });
+    });
+});
+
+                </script>
 </body>
 </html>
